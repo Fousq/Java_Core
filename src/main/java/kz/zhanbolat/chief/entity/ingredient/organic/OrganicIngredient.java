@@ -1,12 +1,9 @@
-package kz.zhanbolat.chief.enity.organic;
+package kz.zhanbolat.chief.entity.ingredient.organic;
 
-import kz.zhanbolat.chief.enity.Freshness;
-import kz.zhanbolat.chief.enity.Ingredient;
-import kz.zhanbolat.chief.enity.Softness;
+import kz.zhanbolat.chief.entity.ingredient.Freshness;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Softness;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Objects;
 
 public class OrganicIngredient extends Ingredient {

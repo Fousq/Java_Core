@@ -1,4 +1,4 @@
-package kz.zhanbolat.chief.enity.meat;
+package kz.zhanbolat.chief.entity.ingredient.meat;
 
 // Enum to declare meat ingredients
 public enum MeatIngredients {

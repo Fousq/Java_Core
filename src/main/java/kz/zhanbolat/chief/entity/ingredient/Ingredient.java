@@ -1,6 +1,5 @@
-package kz.zhanbolat.chief.enity;
+package kz.zhanbolat.chief.entity.ingredient;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Ingredient {

@@ -1,4 +1,4 @@
-package kz.zhanbolat.chief.enity.organic;
+package kz.zhanbolat.chief.entity.ingredient.organic;
 
 // Enum to declare organic ingredients
 public enum OrganicIngredients {
