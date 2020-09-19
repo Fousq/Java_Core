@@ -19,7 +19,6 @@ public class OrganicIngredient extends Ingredient {
         this.freshness = builder.freshness;
         this.softness = builder.softness;
         this.weight = builder.weight;
-        this.expirationDate = builder.expirationDate;
         this.containsSeeds = builder.ingredient.isContainsSeeds();
         this.isPeelable = builder.ingredient.isPeelable();
     }
@@ -73,7 +72,6 @@ public class OrganicIngredient extends Ingredient {
         sb.append(", freshness=").append(freshness);
         sb.append(", softness=").append(softness);
         sb.append(", weight=").append(weight);
-        sb.append(", expirationDate=").append(expirationDate);
         sb.append('}');
         return sb.toString();
     }
@@ -86,7 +84,6 @@ public class OrganicIngredient extends Ingredient {
         private OrganicIngredients ingredient;
         private Softness softness;
         private Freshness freshness;
-        private LocalDate expirationDate;
         private int weight;
 
         private Builder() {
@@ -110,34 +107,10 @@ public class OrganicIngredient extends Ingredient {
             return this;
         }
 
-        public Builder setExpirationDate(LocalDate expirationDate) {
-            this.expirationDate = expirationDate;
-
-            if (Objects.isNull(freshness)) {
-                freshness = determineFreshness(expirationDate);
-            }
-
-            return this;
-        }
-
-        public Builder setExpirationDate(Date expirationDate) {
-            this.expirationDate = LocalDate.ofInstant(expirationDate.toInstant(), ZoneId.systemDefault());
-
-            if (Objects.isNull(freshness)) {
-                freshness = determineFreshness(this.expirationDate);
-            }
-
-            return this;
-        }
-
         public Builder setWeight(int weight) {
             this.weight = weight;
 
             return this;
-        }
-
-        private Freshness determineFreshness(LocalDate expirationDate) {
-            return expirationDate.isAfter(LocalDate.now()) ? Freshness.FRESH : Freshness.STALE;
         }
 
         public OrganicIngredient build() {

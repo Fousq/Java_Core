@@ -8,7 +8,6 @@ public abstract class Ingredient {
     protected Softness softness;
     // the weight is measured in grams
     protected int weight;
-    protected LocalDate expirationDate;
 
     public Freshness getFreshness() {
         return freshness;
@@ -34,14 +33,6 @@ public abstract class Ingredient {
         this.weight = weight;
     }
 
-    public LocalDate getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(LocalDate expirationDate) {
-        this.expirationDate = expirationDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,13 +40,12 @@ public abstract class Ingredient {
         Ingredient ingredent = (Ingredient) o;
         return weight == ingredent.weight &&
                 freshness == ingredent.freshness &&
-                softness == ingredent.softness &&
-                Objects.equals(expirationDate, ingredent.expirationDate);
+                softness == ingredent.softness;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(freshness, softness, weight, expirationDate);
+        return Objects.hash(freshness, softness, weight);
     }
 
     @Override
@@ -64,7 +54,6 @@ public abstract class Ingredient {
         sb.append("freshness=").append(freshness);
         sb.append(", softness=").append(softness);
         sb.append(", weight=").append(weight);
-        sb.append(", expirationDate=").append(expirationDate);
         sb.append('}');
         return sb.toString();
     }
