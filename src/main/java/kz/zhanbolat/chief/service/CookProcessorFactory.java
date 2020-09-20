@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-// TODO: REFACTOR
 public enum CookProcessorFactory {
     GREEK_SALAD_HANDLERS(DishType.GREEK_SALAD, new RemoveSeedsProcessor(OrganicIngredientFactory.BELL_PEPPER.getName()),
             new PeelProcessor(OrganicIngredientFactory.ONION.getName()),
