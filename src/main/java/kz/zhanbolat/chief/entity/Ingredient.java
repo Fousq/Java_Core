@@ -8,7 +8,7 @@ public abstract class Ingredient {
     protected int weight;
     protected boolean isSliced;
     protected boolean isBoiled;
-    protected boolean isFired;
+    protected boolean isFried;
 
     protected Ingredient(String name, int weight) {
         this.name = name;
@@ -47,12 +47,12 @@ public abstract class Ingredient {
         isBoiled = boiled;
     }
 
-    public boolean isFired() {
-        return isFired;
+    public boolean isFried() {
+        return isFried;
     }
 
-    public void setFired(boolean fired) {
-        isFired = fired;
+    public void setFried(boolean fried) {
+        isFried = fried;
     }
 
     @Override
@@ -63,13 +63,13 @@ public abstract class Ingredient {
         return weight == that.weight &&
                 isSliced == that.isSliced &&
                 isBoiled == that.isBoiled &&
-                isFired == that.isFired &&
+                isFried == that.isFried &&
                 Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, isSliced, isBoiled, isFired);
+        return Objects.hash(name, weight, isSliced, isBoiled, isFried);
     }
 
     @Override
@@ -79,7 +79,7 @@ public abstract class Ingredient {
         sb.append(", weight=").append(weight);
         sb.append(", isSliced=").append(isSliced);
         sb.append(", isBoiled=").append(isBoiled);
-        sb.append(", isFired=").append(isFired);
+        sb.append(", isFried=").append(isFried);
         sb.append('}');
         return sb.toString();
     }

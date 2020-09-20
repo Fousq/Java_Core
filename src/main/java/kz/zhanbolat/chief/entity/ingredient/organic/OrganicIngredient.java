@@ -79,7 +79,7 @@ public class OrganicIngredient extends Ingredient {
         sb.append(", weight=").append(weight);
         sb.append(", isSliced=").append(isSliced);
         sb.append(", isBoiled=").append(isBoiled);
-        sb.append(", isFired=").append(isFired);
+        sb.append(", isFried=").append(isFried);
         sb.append('}');
         return sb.toString();
     }

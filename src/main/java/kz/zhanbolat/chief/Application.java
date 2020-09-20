@@ -3,12 +3,13 @@ package kz.zhanbolat.chief;
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
-import kz.zhanbolat.chief.service.CaloriesCalculator;
 import kz.zhanbolat.chief.service.ChiefService;
 import kz.zhanbolat.chief.service.DishType;
 import kz.zhanbolat.chief.service.filter.IngredientFilter;
 import kz.zhanbolat.chief.service.filter.impl.VegetableIngredientFilter;
-import kz.zhanbolat.chief.service.impl.CaloriesCalculatorImpl;
+import kz.zhanbolat.chief.service.finder.IngredientFinder;
+import kz.zhanbolat.chief.service.finder.SearchParams;
+import kz.zhanbolat.chief.service.finder.impl.IngredientFinderImpl;
 import kz.zhanbolat.chief.service.impl.ChiefServiceImpl;
 import kz.zhanbolat.chief.service.sorter.VegetableSorter;
 import kz.zhanbolat.chief.service.sorter.impl.VegetableSorterImpl;
@@ -39,5 +40,10 @@ public class Application {
             System.out.println(cookedIngredient);
         }
         System.out.println("Total calories: " + borsch.getCalories() + " gram");
+
+        IngredientFinder ingredientFinder = new IngredientFinderImpl();
+        SearchParams params = SearchParams.builder().setBoiled(true).setMinWeight(200).setMaxWeight(500).build();
+        Ingredient ingredient = ingredientFinder.findIngredient(params, borsch.getCookedIngredients());
+        System.out.println("Found: " + ingredient);
     }
 }

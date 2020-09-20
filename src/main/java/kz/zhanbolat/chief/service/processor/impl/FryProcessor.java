@@ -1,14 +1,12 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.entity.Ingredient;
-import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredient;
 import kz.zhanbolat.chief.service.exception.NoOilAddedException;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class FryProcessor extends AbstractProcessor implements CookProcessor {
     public FryProcessor(List<String> toCook) {
@@ -30,7 +28,7 @@ public class FryProcessor extends AbstractProcessor implements CookProcessor {
                 if (isIngredientOil(ingredient)) {
                     ((SauceIngredient) ingredient).setCapacity(0);
                 }
-                ingredient.setFired(true);
+                ingredient.setFried(true);
             }
             cookedIngredients.add(ingredient);
         }
