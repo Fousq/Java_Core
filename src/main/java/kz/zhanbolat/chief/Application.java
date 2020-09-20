@@ -33,7 +33,7 @@ public class Application {
         List<OrganicIngredient> sortedVegetables = vegetableSorter.sortByWeightAsc(greekSaladVegetables);
         System.out.println("Sorted vegetables: " + Arrays.toString(sortedVegetables.toArray()));
 
-        System.out.println("Borsch:");
+        System.out.println("\nBorsch:");
         Dish borsch = chiefService.cookDish(DishType.BORSCH);
         for (Ingredient cookedIngredient : borsch.getCookedIngredients()) {
             System.out.println(cookedIngredient);
