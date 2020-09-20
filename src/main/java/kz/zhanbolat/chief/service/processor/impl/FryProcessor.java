@@ -1,26 +1,26 @@
-package kz.zhanbolat.chief.service.handler.impl;
+package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredient;
 import kz.zhanbolat.chief.service.exception.NoOilAddedException;
-import kz.zhanbolat.chief.service.handler.CookHandler;
+import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FryHandler extends AbstractHandler implements CookHandler {
-    public FryHandler(List<String> toCook) {
+public class FryProcessor extends AbstractProcessor implements CookProcessor {
+    public FryProcessor(List<String> toCook) {
         super(toCook);
     }
 
-    public FryHandler(String... toCook) {
+    public FryProcessor(String... toCook) {
         super(toCook);
     }
 
     @Override
-    public Dish cook(List<Ingredient> ingredients) {
+    public List<Ingredient> cook(List<Ingredient> ingredients) {
         if (!oilAdded(ingredients)) {
             throw new NoOilAddedException("No oil was added to fry");
         }
@@ -34,10 +34,7 @@ public class FryHandler extends AbstractHandler implements CookHandler {
             }
             cookedIngredients.add(ingredient);
         }
-        if (Objects.nonNull(cookHandler)) {
-            return cookHandler.cook(cookedIngredients);
-        }
-        return new Dish(ingredients);
+        return ingredients;
     }
 
     private boolean oilAdded(List<Ingredient> ingredients) {
@@ -54,12 +51,5 @@ public class FryHandler extends AbstractHandler implements CookHandler {
             return ((SauceIngredient) ingredient).isOil();
         }
         return false;
-    }
-
-
-    @Override
-    public CookHandler setNextHandler(CookHandler cookHandler) {
-        this.cookHandler = cookHandler;
-        return this;
     }
 }

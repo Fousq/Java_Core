@@ -1,26 +1,25 @@
-package kz.zhanbolat.chief.service.handler.impl;
+package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
-import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredient;
-import kz.zhanbolat.chief.service.handler.CookHandler;
+import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RemoveSeedsHandler extends AbstractHandler implements CookHandler {
-    public RemoveSeedsHandler(List<String> toCook) {
+public class RemoveSeedsProcessor extends AbstractProcessor implements CookProcessor {
+    public RemoveSeedsProcessor(List<String> toCook) {
         super(toCook);
     }
 
-    public RemoveSeedsHandler(String... toCook) {
+    public RemoveSeedsProcessor(String... toCook) {
         super(toCook);
     }
 
     @Override
-    public Dish cook(List<Ingredient> ingredients) {
+    public List<Ingredient> cook(List<Ingredient> ingredients) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             if (toCook.contains(ingredient.getName())) {
@@ -29,10 +28,7 @@ public class RemoveSeedsHandler extends AbstractHandler implements CookHandler {
                 cookedIngredients.add(ingredient);
             }
         }
-        if (Objects.nonNull(cookHandler)) {
-            return cookHandler.cook(cookedIngredients);
-        }
-        return new Dish(cookedIngredients);
+        return cookedIngredients;
     }
 
     private Ingredient handleRemove(OrganicIngredient ingredient) {
@@ -40,11 +36,5 @@ public class RemoveSeedsHandler extends AbstractHandler implements CookHandler {
             ingredient.setContainsSeeds(false);
         }
         return ingredient;
-    }
-
-    @Override
-    public CookHandler setNextHandler(CookHandler cookHandler) {
-        this.cookHandler = cookHandler;
-        return this;
     }
 }

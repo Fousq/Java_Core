@@ -20,14 +20,13 @@ public class Application {
 
     public static void main(String[] args) {
         ChiefService chiefService = new ChiefServiceImpl();
-        CaloriesCalculator caloriesCalculator = new CaloriesCalculatorImpl();
         Dish greekSalad = chiefService.cookDish(DishType.GREEK_SALAD);
         System.out.println("Greek salad:");
         for (Ingredient ingredient : greekSalad.getCookedIngredients()) {
             System.out.println(ingredient);
         }
 
-        System.out.println("Total calories: " + caloriesCalculator.calculate(greekSalad.getCookedIngredients()) + " gram");
+        System.out.println("Total calories: " + greekSalad.getCalories() + " gram");
         IngredientFilter vegetableFilter = new VegetableIngredientFilter();
         List<Ingredient> greekSaladVegetables = vegetableFilter.filterIngredients(greekSalad.getCookedIngredients());
         VegetableSorter vegetableSorter = new VegetableSorterImpl();
@@ -39,6 +38,6 @@ public class Application {
         for (Ingredient cookedIngredient : borsch.getCookedIngredients()) {
             System.out.println(cookedIngredient);
         }
-        System.out.println("Total calories: " + caloriesCalculator.calculate(borsch.getCookedIngredients()) + " gram");
+        System.out.println("Total calories: " + borsch.getCalories() + " gram");
     }
 }

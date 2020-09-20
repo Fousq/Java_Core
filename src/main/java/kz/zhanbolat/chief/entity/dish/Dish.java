@@ -1,20 +1,19 @@
 package kz.zhanbolat.chief.entity.dish;
 
 import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.service.CaloriesCalculator;
+import kz.zhanbolat.chief.service.impl.CaloriesCalculatorImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Dish {
     private List<Ingredient> cookedIngredients;
-
-    public Dish() {
-        cookedIngredients = new ArrayList<>();
-    }
+    private CaloriesCalculator caloriesCalculator;
 
     public Dish(List<Ingredient> ingredients) {
         this.cookedIngredients = ingredients;
+        caloriesCalculator = new CaloriesCalculatorImpl();
     }
 
     public List<Ingredient> getCookedIngredients() {
@@ -31,5 +30,9 @@ public class Dish {
 
     public void remove(Ingredient ingredient) {
         cookedIngredients.remove(ingredient);
+    }
+
+    public long getCalories() {
+        return caloriesCalculator.calculate(cookedIngredients);
     }
 }

@@ -1,27 +1,26 @@
-package kz.zhanbolat.chief.service.handler.impl;
+package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
-import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredient;
-import kz.zhanbolat.chief.service.handler.CookHandler;
+import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class PeelHandler extends AbstractHandler implements CookHandler {
+public class PeelProcessor extends AbstractProcessor implements CookProcessor {
 
-    public PeelHandler(List<String> toCook) {
+    public PeelProcessor(List<String> toCook) {
         super(toCook);
     }
 
-    public PeelHandler(String... toCook) {
+    public PeelProcessor(String... toCook) {
         super(toCook);
     }
 
     @Override
-    public Dish cook(List<Ingredient> ingredients) {
+    public List<Ingredient> cook(List<Ingredient> ingredients) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             if (toCook.contains(ingredient.getName())) {
@@ -30,10 +29,7 @@ public class PeelHandler extends AbstractHandler implements CookHandler {
                 cookedIngredients.add(ingredient);
             }
         }
-        if (Objects.nonNull(cookHandler)) {
-            return cookHandler.cook(ingredients);
-        }
-        return new Dish(cookedIngredients);
+        return cookedIngredients;
     }
 
     private Ingredient handlePeel(Ingredient ingredient) {
@@ -42,11 +38,5 @@ public class PeelHandler extends AbstractHandler implements CookHandler {
             organicIngredient.setPeelable(false);
         }
         return organicIngredient;
-    }
-
-    @Override
-    public CookHandler setNextHandler(CookHandler cookHandler) {
-        this.cookHandler = cookHandler;
-        return this;
     }
 }
