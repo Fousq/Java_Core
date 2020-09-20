@@ -6,6 +6,7 @@ import kz.zhanbolat.chief.entity.Softness;
 import java.util.Objects;
 
 public class OrganicIngredient extends Ingredient {
+    private OrganicType organicType;
     private Softness softness;
     private boolean containsSeeds;
     private boolean isPeelable;
@@ -15,6 +16,7 @@ public class OrganicIngredient extends Ingredient {
         this.softness = builder.ingredient.getSoftness();
         this.containsSeeds = builder.ingredient.isContainsSeeds();
         this.isPeelable = builder.ingredient.isPeelable();
+        this.organicType = builder.ingredient.getOrganicType();
     }
 
     public boolean isContainsSeeds() {
@@ -41,6 +43,14 @@ public class OrganicIngredient extends Ingredient {
         this.softness = softness;
     }
 
+    public OrganicType getOrganicType() {
+        return organicType;
+    }
+
+    public void setOrganicType(OrganicType organicType) {
+        this.organicType = organicType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,18 +59,20 @@ public class OrganicIngredient extends Ingredient {
         OrganicIngredient that = (OrganicIngredient) o;
         return containsSeeds == that.containsSeeds &&
                 isPeelable == that.isPeelable &&
-                Objects.equals(name, that.name);
+                organicType == that.organicType &&
+                softness == that.softness;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, containsSeeds, isPeelable);
+        return Objects.hash(super.hashCode(), organicType, softness, containsSeeds, isPeelable);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("OrganicIngredient{");
-        sb.append("softness=").append(softness);
+        sb.append("organicType=").append(organicType);
+        sb.append(", softness=").append(softness);
         sb.append(", containsSeeds=").append(containsSeeds);
         sb.append(", isPeelable=").append(isPeelable);
         sb.append(", name='").append(name).append('\'');
