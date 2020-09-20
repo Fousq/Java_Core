@@ -2,7 +2,8 @@ package kz.zhanbolat.chief.entity.ingredient.spice;
 
 public enum SpiceIngredientFactory {
     SALT("Salt", true),
-    PEPPER("Pepper", true);
+    PEPPER("Pepper", true),
+    BAY_LEAVES("Bay leaves", false);
 
     private final String name;
     private final boolean isPowder;

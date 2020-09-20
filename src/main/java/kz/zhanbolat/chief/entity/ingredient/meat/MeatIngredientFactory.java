@@ -2,7 +2,8 @@ package kz.zhanbolat.chief.entity.ingredient.meat;
 
 // Enum to declare meat ingredients
 public enum MeatIngredientFactory {
-    CHICKEN_CHEST("Chicken chest", AnimalType.CHICKEN);
+    CHICKEN_CHEST("Chicken chest", AnimalType.CHICKEN),
+    COW_PULP("Cow pulp", AnimalType.COW);
 
     private String name;
     private AnimalType animalType;

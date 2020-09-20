@@ -5,9 +5,15 @@ import kz.zhanbolat.chief.entity.Softness;
 // Enum to declare organic ingredients
 public enum OrganicIngredientFactory {
     TOMATO("Tomato", OrganicType.VEGETABLE, true, false, Softness.SOFT),
-    BELL_PEPPER("Bell pepper", OrganicType.VEGETABLE, true, false, Softness.HARD),
-    CUCUMBER("Cucumber", OrganicType.VEGETABLE, false, true, Softness.HARD),
-    PITTED_OLIVE("Pitted olive", OrganicType.VEGETABLE, false, false, Softness.SOFT);
+    BELL_PEPPER("Bell pepper", OrganicType.VEGETABLE, true, false, Softness.SOFT),
+    CUCUMBER("Cucumber", OrganicType.VEGETABLE, false, true, Softness.SOFT),
+    PITTED_OLIVE("Pitted olive", OrganicType.VEGETABLE, false, false, Softness.SOFT),
+    ONION("Onion", OrganicType.VEGETABLE, false, true, Softness.HARD),
+    POTATOES("Potatoes", OrganicType.VEGETABLE, false, true, Softness.HARD),
+    CABBAGE("CABBAGE", OrganicType.VEGETABLE, false, true, Softness.SOFT),
+    BEET("Beet", OrganicType.VEGETABLE, false, true, Softness.HARD),
+    CARROT("Carrot", OrganicType.VEGETABLE, false, true, Softness.HARD),
+    GARLIC("Garlic", OrganicType.VEGETABLE, false, false, Softness.HARD);
 
     private final String name;
     private final OrganicType organicType;

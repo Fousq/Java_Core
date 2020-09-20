@@ -10,28 +10,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CutHandler implements CookHandler {
-    private CookHandler handler;
+public class CutHandler extends AbstractHandler implements CookHandler {
+    public CutHandler(List<String> toCook) {
+        super(toCook);
+    }
+
+    public CutHandler(String... toCook) {
+        super(toCook);
+    }
 
     @Override
     public Dish cook(List<kz.zhanbolat.chief.entity.Ingredient> ingredients) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
-            if (!(ingredient instanceof SauceIngredient
-                    || ingredient instanceof SpiceIngredient)) {
+            if (toCook.contains(ingredient.getName())) {
                 ingredient.setSliced(true);
             }
             cookedIngredients.add(ingredient);
         }
-        if (Objects.nonNull(handler)) {
-            return handler.cook(cookedIngredients);
+        if (Objects.nonNull(cookHandler)) {
+            return cookHandler.cook(cookedIngredients);
         }
         return new Dish(cookedIngredients);
     }
 
     @Override
-    public CookHandler setNextHandler(CookHandler handler) {
-        this.handler = handler;
+    public CookHandler setNextHandler(CookHandler cookHandler) {
+        this.cookHandler = cookHandler;
         return this;
     }
 

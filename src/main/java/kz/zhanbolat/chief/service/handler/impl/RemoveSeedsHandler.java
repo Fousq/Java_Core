@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class PeelHandler extends AbstractHandler implements CookHandler {
-
-    public PeelHandler(List<String> toCook) {
+public class RemoveSeedsHandler extends AbstractHandler implements CookHandler {
+    public RemoveSeedsHandler(List<String> toCook) {
         super(toCook);
     }
 
-    public PeelHandler(String... toCook) {
+    public RemoveSeedsHandler(String... toCook) {
         super(toCook);
     }
 
@@ -25,23 +24,22 @@ public class PeelHandler extends AbstractHandler implements CookHandler {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             if (toCook.contains(ingredient.getName())) {
-                cookedIngredients.add(handlePeel(ingredient));
+                cookedIngredients.add(handleRemove(((OrganicIngredient) ingredient)));
             } else {
                 cookedIngredients.add(ingredient);
             }
         }
         if (Objects.nonNull(cookHandler)) {
-            return cookHandler.cook(ingredients);
+            return cookHandler.cook(cookedIngredients);
         }
         return new Dish(cookedIngredients);
     }
 
-    private Ingredient handlePeel(Ingredient ingredient) {
-        OrganicIngredient organicIngredient = (OrganicIngredient) ingredient;
-        if (organicIngredient.isPeelable()) {
-            organicIngredient.setPeelable(false);
+    private Ingredient handleRemove(OrganicIngredient ingredient) {
+        if (ingredient.isContainsSeeds()) {
+            ingredient.setContainsSeeds(false);
         }
-        return organicIngredient;
+        return ingredient;
     }
 
     @Override

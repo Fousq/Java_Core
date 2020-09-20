@@ -1,7 +1,7 @@
 package kz.zhanbolat.chief.service;
 
 public enum DishType {
-    GREEK_SALAD("Greek salad");
+    GREEK_SALAD("Greek salad"), BORSCH("Borsch");
 
     private final String name;
 

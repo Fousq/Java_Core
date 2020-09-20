@@ -7,10 +7,12 @@ import java.util.Objects;
 public class SauceIngredient extends Ingredient {
     // measured in ml, 1 ml = 1 gram
     private int capacity;
+    private boolean isOil;
 
-    public SauceIngredient(String name, int weight) {
+    public SauceIngredient(String name, int weight, boolean isOil) {
         super(name, weight);
         this.capacity = weight;
+        this.isOil = isOil;
     }
 
     public int getCapacity() {
@@ -19,6 +21,15 @@ public class SauceIngredient extends Ingredient {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+        super.setWeight(capacity);
+    }
+
+    public boolean isOil() {
+        return isOil;
+    }
+
+    public void setOil(boolean oil) {
+        isOil = oil;
     }
 
     @Override
@@ -27,18 +38,20 @@ public class SauceIngredient extends Ingredient {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SauceIngredient that = (SauceIngredient) o;
-        return capacity == that.capacity;
+        return capacity == that.capacity &&
+                isOil == that.isOil;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), capacity);
+        return Objects.hash(super.hashCode(), capacity, isOil);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("SauceIngredient{");
         sb.append("capacity=").append(capacity);
+        sb.append(", isOil=").append(isOil);
         sb.append(", name='").append(name).append('\'');
         sb.append(", weight=").append(weight);
         sb.append(", isSliced=").append(isSliced);
