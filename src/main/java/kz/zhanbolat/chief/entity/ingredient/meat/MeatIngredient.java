@@ -1,29 +1,15 @@
 package kz.zhanbolat.chief.entity.ingredient.meat;
 
-import kz.zhanbolat.chief.entity.ingredient.Freshness;
-import kz.zhanbolat.chief.entity.ingredient.Ingredient;
-import kz.zhanbolat.chief.entity.ingredient.Softness;
+import kz.zhanbolat.chief.entity.Ingredient;
 
 import java.util.Objects;
 
 public class MeatIngredient extends Ingredient {
-    private String name;
     private AnimalType animalType;
 
-    public MeatIngredient(Builder builder) {
-        this.name = builder.ingredient.getName();
-        this.animalType = builder.ingredient.getAnimalType();
-        this.freshness = builder.freshness;
-        this.softness = builder.softness;
-        this.weight = builder.weight;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public MeatIngredient(String name, int weight, AnimalType animalType) {
+        super(name, weight);
+        this.animalType = animalType;
     }
 
     public AnimalType getAnimalType() {
@@ -52,51 +38,13 @@ public class MeatIngredient extends Ingredient {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("MeatIngredient{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", animalType=").append(animalType);
-        sb.append(", freshness=").append(freshness);
-        sb.append(", softness=").append(softness);
+        sb.append("animalType=").append(animalType);
+        sb.append(", name='").append(name).append('\'');
         sb.append(", weight=").append(weight);
+        sb.append(", isSliced=").append(isSliced);
+        sb.append(", isBoiled=").append(isBoiled);
+        sb.append(", isFired=").append(isFired);
         sb.append('}');
         return sb.toString();
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private MeatIngredients ingredient;
-        private Freshness freshness;
-        private Softness softness;
-        private int weight;
-
-        public Builder setMeatIngredient(MeatIngredients ingredient) {
-            this.ingredient = ingredient;
-
-            return this;
-        }
-
-        public Builder setFreshness(Freshness freshness) {
-            this.freshness = freshness;
-
-            return this;
-        }
-
-        public Builder setSoftness(Softness softness) {
-            this.softness = softness;
-
-            return this;
-        }
-
-        public Builder setWeight(int weight) {
-            this.weight = weight;
-
-            return this;
-        }
-
-        public MeatIngredient build() {
-            return new MeatIngredient(this);
-        }
     }
 }

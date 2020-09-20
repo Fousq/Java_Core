@@ -1,31 +1,20 @@
 package kz.zhanbolat.chief.entity.ingredient.organic;
 
-import kz.zhanbolat.chief.entity.ingredient.Freshness;
-import kz.zhanbolat.chief.entity.ingredient.Ingredient;
-import kz.zhanbolat.chief.entity.ingredient.Softness;
+import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.Softness;
 
 import java.util.Objects;
 
 public class OrganicIngredient extends Ingredient {
-    private String name;
+    private Softness softness;
     private boolean containsSeeds;
     private boolean isPeelable;
 
     public OrganicIngredient(Builder builder) {
-        this.name = builder.ingredient.getName();
-        this.freshness = builder.freshness;
-        this.softness = builder.softness;
-        this.weight = builder.weight;
+        super(builder.ingredient.getName(), builder.weight);
+        this.softness = builder.ingredient.getSoftness();
         this.containsSeeds = builder.ingredient.isContainsSeeds();
         this.isPeelable = builder.ingredient.isPeelable();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean isContainsSeeds() {
@@ -42,6 +31,14 @@ public class OrganicIngredient extends Ingredient {
 
     public void setPeelable(boolean peelable) {
         this.isPeelable = peelable;
+    }
+
+    public Softness getSoftness() {
+        return softness;
+    }
+
+    public void setSoftness(Softness softness) {
+        this.softness = softness;
     }
 
     @Override
@@ -63,12 +60,14 @@ public class OrganicIngredient extends Ingredient {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("OrganicIngredient{");
-        sb.append("name='").append(name).append('\'');
+        sb.append("softness=").append(softness);
         sb.append(", containsSeeds=").append(containsSeeds);
         sb.append(", isPeelable=").append(isPeelable);
-        sb.append(", freshness=").append(freshness);
-        sb.append(", softness=").append(softness);
+        sb.append(", name='").append(name).append('\'');
         sb.append(", weight=").append(weight);
+        sb.append(", isSliced=").append(isSliced);
+        sb.append(", isBoiled=").append(isBoiled);
+        sb.append(", isFired=").append(isFired);
         sb.append('}');
         return sb.toString();
     }
@@ -78,28 +77,14 @@ public class OrganicIngredient extends Ingredient {
     }
 
     public static class Builder {
-        private OrganicIngredients ingredient;
-        private Softness softness;
-        private Freshness freshness;
+        private OrganicIngredientFactory ingredient;
         private int weight;
 
         private Builder() {
         }
 
-        public Builder setOrganicIngredient(OrganicIngredients ingredient) {
+        public Builder setOrganicIngredient(OrganicIngredientFactory ingredient) {
             this.ingredient = ingredient;
-
-            return this;
-        }
-
-        public Builder setSoftness(Softness softness) {
-            this.softness = softness;
-
-            return this;
-        }
-
-        public Builder setFreshness(Freshness freshness) {
-            this.freshness = freshness;
 
             return this;
         }
