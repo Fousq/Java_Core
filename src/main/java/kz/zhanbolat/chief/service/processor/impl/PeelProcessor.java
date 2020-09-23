@@ -1,13 +1,11 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.entity.Ingredient;
-import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PeelProcessor extends AbstractProcessor implements CookProcessor {
 

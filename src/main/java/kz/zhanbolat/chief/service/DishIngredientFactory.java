@@ -3,11 +3,8 @@ package kz.zhanbolat.chief.service;
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.ingredient.cheese.CheeseIngredientFactory;
 import kz.zhanbolat.chief.entity.ingredient.meat.MeatIngredientFactory;
-import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredientFactory;
-import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredient;
 import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredientFactory;
-import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredient;
 import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredientFactory;
 
 import java.util.Arrays;

@@ -1,7 +1,5 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
-import kz.zhanbolat.chief.service.processor.CookProcessor;
-
 import java.util.Arrays;
 import java.util.List;
 
