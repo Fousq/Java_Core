@@ -16,17 +16,11 @@ Offical docs:
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
 
-## Task 1
+## Task 5
 
 Description
-Task 1. (10 points) Classic Annotations
+Task 5. (10 points) Very helpful annotation and its handler
 
-Use the project from the previous module [Java Core I] with class hierarchy or another pet project with class hierarchy.
+Write annotation handler for the previous task and @ProdCode annotation
 
-Use next annotations correctly with explanation in comments
-
-@Deprecated
-@Override
-@SuppressWarnings
-@FunctionalInterface
-Refactor code if it is required
+Add class ProdRunner and run all methods annotated with @ProdCode
