@@ -16,17 +16,16 @@ Offical docs:
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
 
-## Task 1
+## Task 3
 
 Description
-Task 1. (10 points) Classic Annotations
+Task 3. (10 points) Custom annotations
 
 Use the project from the previous module [Java Core I] with class hierarchy or another pet project with class hierarchy.
 
-Use next annotations correctly with explanation in comments
+Create custom annotations and use them in code
 
-@Deprecated
-@Override
-@SuppressWarnings
-@FunctionalInterface
-Refactor code if it is required
+@UseStackOnly which could be attached to fields and couldn’t be accessed in Runtime
+@UseArrayList which could be attached to methods and couldn’t be found in the bytecode
+@ThisCodeSmells(reviewer=”Petya”) which could be attached everywhere and could be repeatable
+@ProdCode which could be attached to methods only and should be accessed in Runtime
