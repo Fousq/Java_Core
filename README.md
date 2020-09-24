@@ -16,17 +16,16 @@ Offical docs:
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
 
-## Task 1
+## Task 2
 
 Description
-Task 1. (10 points) Classic Annotations
+Task 2. (20 points) Reflection API usage
 
 Use the project from the previous module [Java Core I] with class hierarchy or another pet project with class hierarchy.
 
-Use next annotations correctly with explanation in comments
+Rewrite your app with Reflection API:
 
-@Deprecated
-@Override
-@SuppressWarnings
-@FunctionalInterface
-Refactor code if it is required
+(5 points) Use reflection to instantiate all objects in client code via constructors (with or without arguments)
+(5 points) Use reflection API to fill private fields without setters
+(5 points) Use reflection API to change method calls from direct call on reflection call in client code
+(5 points) Print out the metadata for all classes in application in human-readable format format (about all fields, methods, modifiers and etc.)
