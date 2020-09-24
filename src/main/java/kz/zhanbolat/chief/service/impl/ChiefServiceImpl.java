@@ -1,13 +1,13 @@
 package kz.zhanbolat.chief.service.impl;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.service.CookProcessorFactory;
 import kz.zhanbolat.chief.service.DishIngredientFactory;
 import kz.zhanbolat.chief.service.ChiefService;
 import kz.zhanbolat.chief.service.DishType;
-import kz.zhanbolat.chief.service.exception.NoIngredientsFoundException;
-import kz.zhanbolat.chief.service.exception.NoSuchDishFound;
+import kz.zhanbolat.chief.exception.NoIngredientsFoundException;
+import kz.zhanbolat.chief.exception.NoSuchDishFound;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.List;

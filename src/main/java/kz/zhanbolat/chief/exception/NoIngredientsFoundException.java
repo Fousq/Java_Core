@@ -1,4 +1,4 @@
-package kz.zhanbolat.chief.service.exception;
+package kz.zhanbolat.chief.exception;
 
 public class NoIngredientsFoundException extends RuntimeException {
 

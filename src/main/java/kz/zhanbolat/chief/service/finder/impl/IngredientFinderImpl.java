@@ -1,7 +1,7 @@
 package kz.zhanbolat.chief.service.finder.impl;
 
-import kz.zhanbolat.chief.entity.Ingredient;
-import kz.zhanbolat.chief.service.exception.IngredientNotFoundException;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.exception.IngredientNotFoundException;
 import kz.zhanbolat.chief.service.finder.IngredientFinder;
 import kz.zhanbolat.chief.service.finder.SearchParams;
 

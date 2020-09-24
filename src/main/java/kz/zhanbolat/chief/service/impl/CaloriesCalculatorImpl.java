@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.service.impl;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.service.CaloriesCalculator;
 
 import java.util.List;
