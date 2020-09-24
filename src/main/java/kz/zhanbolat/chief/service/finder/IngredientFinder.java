@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.service.finder;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 
 import java.util.List;
 
