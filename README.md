@@ -16,17 +16,15 @@ Offical docs:
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
 
-## Task 1
+## Task 4
 
 Description
-Task 1. (10 points) Classic Annotations
+Task 4 (10 points) How to handle annotations?
 
-Use the project from the previous module [Java Core I] with class hierarchy or another pet project with class hierarchy.
+Write annotation handler for the @ThisCodeSmells annotation from the previous task source code.
 
-Use next annotations correctly with explanation in comments
+It should print out
 
-@Deprecated
-@Override
-@SuppressWarnings
-@FunctionalInterface
-Refactor code if it is required
+All smelt code names (classes, method, fields)
+Authority of persons who count this code smelt and vote for it
+Range all smelt code areas by votes (amount of annotations)
