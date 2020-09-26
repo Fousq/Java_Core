@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.service.ChiefService;
@@ -17,6 +17,9 @@ import kz.zhanbolat.chief.service.sorter.impl.VegetableSorterImpl;
 import java.util.Arrays;
 import java.util.List;
 
+/* TODO: Add entity fridge to store ingredients with the specific quantity,
+    add handler on ingredient's endness, think about adding the takeout for foods
+*/
 public class Application {
 
     public static void main(String[] args) {

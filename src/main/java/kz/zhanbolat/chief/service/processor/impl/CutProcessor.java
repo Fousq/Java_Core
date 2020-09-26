@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class CutProcessor extends AbstractProcessor implements CookProcessor {
     }
 
     @Override
-    public List<Ingredient> cook(List<kz.zhanbolat.chief.entity.Ingredient> ingredients) {
+    public List<Ingredient> cook(List<Ingredient> ingredients) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             if (toCook.contains(ingredient.getName())) {
