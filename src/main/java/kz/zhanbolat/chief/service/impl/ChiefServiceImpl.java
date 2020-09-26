@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief.service.impl;
 
+import kz.zhanbolat.chief.entity.fridge.Fridge;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.service.CookProcessorFactory;
@@ -13,18 +14,23 @@ import kz.zhanbolat.chief.service.processor.CookProcessor;
 import java.util.List;
 
 public class ChiefServiceImpl implements ChiefService {
+    private Fridge fridge;
+
+    public ChiefServiceImpl(Fridge fridge) {
+        this.fridge = fridge;
+    }
 
     @Override
-    public Dish cookDish(DishType dishType) {
+    public Dish cookDish(DishType dishType) throws NoIngredientsFoundException {
         List<Ingredient> ingredients = getIngredientsByDish(dishType);
         List<CookProcessor> cookProcessors = getCookProcessorsByDish(dishType);
         for (CookProcessor cookProcessor : cookProcessors) {
-            ingredients = cookProcessor.cook(ingredients);
+            ingredients = cookProcessor.cook(fridge);
         }
         return new Dish(ingredients);
     }
 
-    private List<Ingredient> getIngredientsByDish(DishType dishType) {
+    private List<Ingredient> getIngredientsByDish(DishType dishType) throws NoIngredientsFoundException {
         for (DishIngredientFactory dishIngredient : DishIngredientFactory.values()) {
             if (dishIngredient.getDishes() == dishType) {
                 return dishIngredient.getIngredients();

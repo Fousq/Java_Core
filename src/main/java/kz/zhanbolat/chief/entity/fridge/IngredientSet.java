@@ -1,6 +1,7 @@
 package kz.zhanbolat.chief.entity.fridge;
 
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.exception.AboveExistingException;
 import kz.zhanbolat.chief.exception.DifferentIngredientsException;
 import kz.zhanbolat.chief.service.CaloriesCalculator;
 import kz.zhanbolat.chief.service.impl.CaloriesCalculatorImpl;
@@ -29,9 +30,12 @@ public class IngredientSet {
         return takenIngredients;
     }
 
-    public List<Ingredient> getIngredients(int amount) {
-        if (amount <= 0 || amount > ingredients.size()) {
-            throw new IllegalArgumentException("");
+    public List<Ingredient> getIngredients(int amount) throws AboveExistingException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount cannot be below zero.");
+        }
+        if (amount > ingredients.size()) {
+            throw new AboveExistingException("The required amount is above the existing amount.");
         }
         List<Ingredient> takenIngredients = new ArrayList<>(amount);
         while (amount != 0) {

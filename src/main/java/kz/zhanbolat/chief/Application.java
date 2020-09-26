@@ -1,8 +1,15 @@
 package kz.zhanbolat.chief;
 
+import kz.zhanbolat.chief.entity.fridge.Fridge;
+import kz.zhanbolat.chief.entity.fridge.IngredientSetFactory;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
+import kz.zhanbolat.chief.entity.ingredient.cheese.CheeseIngredientFactory;
+import kz.zhanbolat.chief.entity.ingredient.meat.MeatIngredientFactory;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
+import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredientFactory;
+import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredientFactory;
+import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredientFactory;
 import kz.zhanbolat.chief.service.ChiefService;
 import kz.zhanbolat.chief.service.DishType;
 import kz.zhanbolat.chief.service.filter.IngredientFilter;
@@ -17,13 +24,37 @@ import kz.zhanbolat.chief.service.sorter.impl.VegetableSorterImpl;
 import java.util.Arrays;
 import java.util.List;
 
-/* TODO: Add entity fridge to store ingredients with the specific quantity,
-    add handler on ingredient's endness, think about adding the takeout for foods
+/* TODO: Add handler on ingredient's endness
 */
 public class Application {
 
     public static void main(String[] args) {
-        ChiefService chiefService = new ChiefServiceImpl();
+        // Init
+        Fridge fridge = new Fridge();
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.TOMATO.create(200), 5));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.BELL_PEPPER.create(300), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.CUCUMBER.create(100), 7));
+        fridge.add(IngredientSetFactory.INSTANCE.create(CheeseIngredientFactory.FETA_CHEESE.create(150), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.PITTED_OLIVE.create(200), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SauceIngredientFactory.OLIVE_OIL.create(100), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SauceIngredientFactory.LIMON_JUICE.create(40), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SpiceIngredientFactory.SALT.create(40), 100));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SpiceIngredientFactory.PEPPER.create(30), 100));
+        fridge.add(IngredientSetFactory.INSTANCE.create(MeatIngredientFactory.COW_PULP.create(2000), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.POTATOES.create(500), 10));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.CABBAGE.create(300), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.BEET.create(400), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.CARROT.create(200), 5));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.ONION.create(200), 10));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SauceIngredientFactory.TOMATO_PASTE.create(100), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SauceIngredientFactory.VINEGAR.create(100), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(OrganicIngredientFactory.GARLIC.create(100), 10));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SpiceIngredientFactory.BAY_LEAVES.create(100), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SpiceIngredientFactory.SALT.create(100), 3));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SpiceIngredientFactory.PEPPER.create(100), 4));
+        fridge.add(IngredientSetFactory.INSTANCE.create(SauceIngredientFactory.VEGETABLE_OIL.create(200), 3));
+
+        ChiefService chiefService = new ChiefServiceImpl(fridge);
         Dish greekSalad = chiefService.cookDish(DishType.GREEK_SALAD);
         System.out.println("Greek salad:");
         for (Ingredient ingredient : greekSalad.getCookedIngredients()) {

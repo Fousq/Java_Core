@@ -1,10 +1,10 @@
 package kz.zhanbolat.chief.service.processor;
 
-import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.entity.dish.Dish;
+import kz.zhanbolat.chief.entity.fridge.Fridge;
 
-import java.util.List;
-
+// TODO: add required amount to cook for processors
 @FunctionalInterface
 public interface CookProcessor {
-    List<Ingredient> cook(List<Ingredient> ingredients);
+    Dish cook(Fridge fridge);
 }

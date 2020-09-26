@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
+import kz.zhanbolat.chief.entity.fridge.Fridge;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
@@ -18,7 +19,7 @@ public class PeelProcessor extends AbstractProcessor implements CookProcessor {
     }
 
     @Override
-    public List<Ingredient> cook(List<Ingredient> ingredients) {
+    public List<Ingredient> cook(Fridge fridge) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             if (toCook.contains(ingredient.getName())) {

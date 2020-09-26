@@ -1,12 +1,11 @@
 package kz.zhanbolat.chief.entity.fridge;
 
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.exception.AboveExistingException;
 import kz.zhanbolat.chief.exception.NoIngredientsFoundException;
+import kz.zhanbolat.chief.exception.NoSuchDishException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Fridge {
     private final Set<IngredientSet> ingredients;
@@ -39,14 +38,27 @@ public class Fridge {
     }
 
     public List<Ingredient> getIngredients(String ingredientName) {
-        return getIngredientSet(ingredientName).getIngredients();
+        try {
+            return getIngredientSet(ingredientName).getIngredients();
+        } catch (NoIngredientsFoundException e) {
+            throw new NoSuchDishException("Such dish cannot be cooked.");
+        }
     }
 
     public List<Ingredient> getIngredientsWithSpecificAmount(String ingredientName, int amount) {
-        return getIngredientSet(ingredientName).getIngredients(amount);
+        List<Ingredient> ingredients = null;
+        try {
+            ingredients = getIngredientSet(ingredientName).getIngredients(amount);
+        } catch (AboveExistingException e) {
+            // TODO: add handler to buy ingredient
+            ingredients = Collections.emptyList();
+        } catch (NoIngredientsFoundException e) {
+            throw new NoSuchDishException("Such dish cannot be cooked.");
+        }
+        return ingredients;
     }
 
-    private IngredientSet getIngredientSet(String ingredientName) {
+    private IngredientSet getIngredientSet(String ingredientName) throws NoIngredientsFoundException {
         for (IngredientSet ingredientSet : ingredients) {
             if (Objects.equals(ingredientName, ingredientSet.getIngredientName())) {
                 return ingredientSet;

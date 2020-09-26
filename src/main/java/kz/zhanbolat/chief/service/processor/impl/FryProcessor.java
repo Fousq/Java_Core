@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
+import kz.zhanbolat.chief.entity.fridge.Fridge;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredient;
 import kz.zhanbolat.chief.exception.NoOilAddedException;
@@ -18,7 +19,7 @@ public class FryProcessor extends AbstractProcessor implements CookProcessor {
     }
 
     @Override
-    public List<Ingredient> cook(List<Ingredient> ingredients) {
+    public List<Ingredient> cook(Fridge fridge) {
         if (!oilAdded(ingredients)) {
             throw new NoOilAddedException("No oil was added to fry");
         }
