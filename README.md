@@ -28,4 +28,4 @@ Rewrite your app with Reflection API:
 * (5 points) Use reflection to instantiate all objects in client code via constructors (with or without arguments)
 * (5 points) Use reflection API to fill private fields without setters
 * (5 points) Use reflection API to change method calls from direct call on reflection call in client code
-* (5 points) Print out the metadata for all classes in application in human-readable format format (about all fields, methods, modifiers and etc.)
+* (5 points) Print out the metadata for all classes in application in human-readable format (about all fields, methods, modifiers and etc.)
