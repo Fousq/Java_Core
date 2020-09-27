@@ -25,7 +25,7 @@ Use the project from the previous module [Java Core I] with class hierarchy or a
 
 Create custom annotations and use them in code
 
-@UseStackOnly which could be attached to fields and couldn’t be accessed in Runtime
-@UseArrayList which could be attached to methods and couldn’t be found in the bytecode
-@ThisCodeSmells(reviewer=”Petya”) which could be attached everywhere and could be repeatable
-@ProdCode which could be attached to methods only and should be accessed in Runtime
+* @UseStackOnly which could be attached to fields and couldn’t be accessed in Runtime
+* @UseArrayList which could be attached to methods and couldn’t be found in the bytecode
+* @ThisCodeSmells(reviewer=”Petya”) which could be attached everywhere and could be repeatable
+* @ProdCode which could be attached to methods only and should be accessed in Runtime
