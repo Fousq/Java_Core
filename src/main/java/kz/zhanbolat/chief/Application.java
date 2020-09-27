@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief;
 
+import kz.zhanbolat.chief.annotation.ThisCodeSmell;
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
@@ -19,6 +20,8 @@ import java.util.List;
 
 public class Application {
 
+    @ThisCodeSmell(reviewer = "Zhanbolat")
+    @ThisCodeSmell(reviewer = "Another reviewer")
     public static void main(String[] args) {
         ChiefService chiefService = new ChiefServiceImpl();
         Dish greekSalad = chiefService.cookDish(DishType.GREEK_SALAD);
