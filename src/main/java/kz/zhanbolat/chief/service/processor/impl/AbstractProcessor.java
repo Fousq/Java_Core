@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class AbstractProcessor {
+    //@UseArrayList
+    // on uncomment should treat as error by the compiler
     @UseStackOnly
     protected List<String> toCook;
 
