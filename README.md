@@ -25,6 +25,6 @@ Write annotation handler for the @ThisCodeSmells annotation from the previous ta
 
 It should print out
 
-All smelt code names (classes, method, fields)
-Authority of persons who count this code smelt and vote for it
-Range all smelt code areas by votes (amount of annotations)
+* All smelt code names (classes, method, fields)
+* Authority of persons who count this code smelt and vote for it
+* Range all smelt code areas by votes (amount of annotations)
