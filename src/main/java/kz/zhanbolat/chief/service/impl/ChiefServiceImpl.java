@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief.service.impl;
 
+import kz.zhanbolat.chief.annotation.ProdCode;
 import kz.zhanbolat.chief.entity.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.service.CookProcessorFactory;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ChiefServiceImpl implements ChiefService {
 
     @Override
+    @ProdCode
     public Dish cookDish(DishType dishType) {
         List<Ingredient> ingredients = getIngredientsByDish(dishType);
         List<CookProcessor> cookProcessors = getCookProcessorsByDish(dishType);

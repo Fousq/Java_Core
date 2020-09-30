@@ -1,4 +1,6 @@
-package kz.zhanbolat.chief.util;
+package kz.zhanbolat.chief.util.impl;
+
+import kz.zhanbolat.chief.util.ReflectionScanner;
 
 import java.io.File;
 import java.io.IOException;

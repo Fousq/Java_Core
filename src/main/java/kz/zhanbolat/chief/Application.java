@@ -1,49 +1,40 @@
 package kz.zhanbolat.chief;
 
-import kz.zhanbolat.chief.entity.Ingredient;
-import kz.zhanbolat.chief.entity.dish.Dish;
-import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.service.ChiefService;
 import kz.zhanbolat.chief.service.DishType;
-import kz.zhanbolat.chief.service.filter.IngredientFilter;
-import kz.zhanbolat.chief.service.filter.impl.VegetableIngredientFilter;
-import kz.zhanbolat.chief.service.finder.IngredientFinder;
-import kz.zhanbolat.chief.service.finder.SearchParams;
-import kz.zhanbolat.chief.service.finder.impl.IngredientFinderImpl;
 import kz.zhanbolat.chief.service.impl.ChiefServiceImpl;
-import kz.zhanbolat.chief.service.sorter.VegetableSorter;
-import kz.zhanbolat.chief.service.sorter.impl.VegetableSorterImpl;
+import kz.zhanbolat.chief.util.ProdCodeRunModel;
+import kz.zhanbolat.chief.util.ProdRunner;
+import kz.zhanbolat.chief.util.impl.ProdRunnerImpl;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class Application {
 
     public static void main(String[] args) {
-        ChiefService chiefService = new ChiefServiceImpl();
-        Dish greekSalad = chiefService.cookDish(DishType.GREEK_SALAD);
-        System.out.println("Greek salad:");
-        for (Ingredient ingredient : greekSalad.getCookedIngredients()) {
-            System.out.println(ingredient);
+        Map<String, ProdCodeRunModel> methodsParamsMap = new HashMap<>();
+        try {
+            methodsParamsMap.put(getMethod("cookDish", ChiefService.class).getName(),
+                    new ProdCodeRunModel(new ChiefServiceImpl(), DishType.GREEK_SALAD));
+        } catch (NoSuchMethodException e) {
+            System.err.println("Cannot get the method. " + e.getMessage());
         }
-
-        System.out.println("Total calories: " + greekSalad.getCalories() + " gram");
-        IngredientFilter vegetableFilter = new VegetableIngredientFilter();
-        List<Ingredient> greekSaladVegetables = vegetableFilter.filterIngredients(greekSalad.getCookedIngredients());
-        VegetableSorter vegetableSorter = new VegetableSorterImpl();
-        List<OrganicIngredient> sortedVegetables = vegetableSorter.sortByWeightAsc(greekSaladVegetables);
-        System.out.println("Sorted vegetables: " + Arrays.toString(sortedVegetables.toArray()));
-
-        System.out.println("\nBorsch:");
-        Dish borsch = chiefService.cookDish(DishType.BORSCH);
-        for (Ingredient cookedIngredient : borsch.getCookedIngredients()) {
-            System.out.println(cookedIngredient);
+        ProdRunner runner = new ProdRunnerImpl(methodsParamsMap);
+        try {
+            runner.run();
+        } catch (IOException e) {
+            System.err.println("Cannot start the runner. " + e.getMessage());
         }
-        System.out.println("Total calories: " + borsch.getCalories() + " gram");
+    }
 
-        IngredientFinder ingredientFinder = new IngredientFinderImpl();
-        SearchParams params = SearchParams.builder().setBoiled(true).setMinWeight(200).setMaxWeight(500).build();
-        Ingredient ingredient = ingredientFinder.findIngredient(params, borsch.getCookedIngredients());
-        System.out.println("Found: " + ingredient);
+    private static Method getMethod(String methodName, Class<?> clazz) throws NoSuchMethodException {
+        for (Method method : clazz.getMethods()) {
+            if (Objects.equals(method.getName(), methodName)) {
+                return method;
+            }
+        }
+        throw new NoSuchMethodException("No such method " + methodName);
     }
 }
