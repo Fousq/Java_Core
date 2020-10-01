@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Should be refactored in future
+ */
+@Deprecated
 public enum DishIngredientFactory {
     GREEK_SALAD_INGREDIENTS(DishType.GREEK_SALAD,
             Arrays.asList(OrganicIngredientFactory.TOMATO.create(200),

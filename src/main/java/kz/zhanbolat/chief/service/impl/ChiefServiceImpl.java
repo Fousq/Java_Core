@@ -12,6 +12,8 @@ import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.List;
 
+// To suppress the deprecation warnings
+@SuppressWarnings("deprecation")
 public class ChiefServiceImpl implements ChiefService {
 
     @Override
@@ -32,6 +34,7 @@ public class ChiefServiceImpl implements ChiefService {
         }
         throw new NoIngredientsFoundException("No ingredient was found for " + dishType.getName());
     }
+
 
     private List<CookProcessor> getCookProcessorsByDish(DishType dishType) {
         for (CookProcessorFactory cookProcessorFactory : CookProcessorFactory.values()) {
