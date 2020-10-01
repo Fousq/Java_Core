@@ -13,11 +13,16 @@ import kz.zhanbolat.chief.service.finder.impl.IngredientFinderImpl;
 import kz.zhanbolat.chief.service.impl.ChiefServiceImpl;
 import kz.zhanbolat.chief.service.sorter.VegetableSorter;
 import kz.zhanbolat.chief.service.sorter.impl.VegetableSorterImpl;
+import kz.zhanbolat.chief.util.ReflectionClassPrinter;
 import kz.zhanbolat.chief.util.ReflectionCreator;
 import kz.zhanbolat.chief.util.ReflectionInvoker;
+import kz.zhanbolat.chief.util.ReflectionScanner;
+import kz.zhanbolat.chief.util.impl.ReflectionClassPrinterImpl;
 import kz.zhanbolat.chief.util.impl.ReflectionCreatorImpl;
 import kz.zhanbolat.chief.util.impl.ReflectionInvokerImpl;
+import kz.zhanbolat.chief.util.impl.ReflectionScannerImpl;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,5 +65,20 @@ public class Application {
         Ingredient ingredient = (Ingredient) reflectionInvoker.invokeMethod(ingredientFinder, "findIngredient",
                 params, borsch.getCookedIngredients());
         System.out.println("Found: " + ingredient);
+        runPrinting();
+    }
+
+    private static void runPrinting() {
+        ReflectionScanner scanner = new ReflectionScannerImpl();
+        Class<?>[] classes = new Class[0];
+        try {
+            classes = scanner.getClasses(Application.class.getPackageName());
+        } catch (IOException e) {
+            System.err.println("Cannot get classes from " + Application.class.getPackageName());
+        }
+        ReflectionClassPrinter printer = new ReflectionClassPrinterImpl();
+        for (Class<?> clazz : classes) {
+            printer.print(clazz);
+        }
     }
 }
