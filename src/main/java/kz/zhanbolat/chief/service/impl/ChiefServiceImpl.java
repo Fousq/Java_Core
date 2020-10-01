@@ -9,17 +9,10 @@ import kz.zhanbolat.chief.service.DishType;
 import kz.zhanbolat.chief.exception.NoIngredientsFoundException;
 import kz.zhanbolat.chief.exception.NoSuchDishFound;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
-import kz.zhanbolat.chief.util.ReflectionClassPrinter;
-import kz.zhanbolat.chief.util.impl.ReflectionClassPrinterImpl;
 
 import java.util.List;
 
 public class ChiefServiceImpl implements ChiefService {
-    private static final ReflectionClassPrinter printer = new ReflectionClassPrinterImpl();
-
-    public ChiefServiceImpl() {
-        printer.print(this.getClass());
-    }
 
     @Override
     public Dish cookDish(DishType dishType) {

@@ -4,20 +4,12 @@ import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.exception.IngredientNotFoundException;
 import kz.zhanbolat.chief.service.finder.IngredientFinder;
 import kz.zhanbolat.chief.service.finder.SearchParams;
-import kz.zhanbolat.chief.util.ReflectionClassPrinter;
-import kz.zhanbolat.chief.util.impl.ReflectionClassPrinterImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class IngredientFinderImpl implements IngredientFinder {
-    private static final ReflectionClassPrinter printer = new ReflectionClassPrinterImpl();
-
-    public IngredientFinderImpl() {
-        printer.print(this.getClass());
-    }
-
     @Override
     public Ingredient findIngredient(SearchParams params, List<Ingredient> ingredients) {
         if (Objects.isNull(ingredients) || ingredients.size() == 0) {
