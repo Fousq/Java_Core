@@ -1,8 +1,8 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredient;
-import kz.zhanbolat.chief.service.exception.NoOilAddedException;
+import kz.zhanbolat.chief.exception.NoOilAddedException;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;

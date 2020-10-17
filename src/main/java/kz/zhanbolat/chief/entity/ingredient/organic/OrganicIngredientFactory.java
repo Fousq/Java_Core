@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.entity.ingredient.organic;
 
-import kz.zhanbolat.chief.entity.Softness;
+import kz.zhanbolat.chief.entity.ingredient.Softness;
 
 // Enum to declare organic ingredients
 public enum OrganicIngredientFactory {

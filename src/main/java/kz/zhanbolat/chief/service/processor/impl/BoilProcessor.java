@@ -1,7 +1,7 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
 import kz.zhanbolat.chief.annotation.ThisCodeSmell;
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.ArrayList;
