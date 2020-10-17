@@ -22,6 +22,11 @@ import java.util.List;
 /* TODO: Add entity fridge to store ingredients with the specific quantity,
     add handler on ingredient's endness, think about adding the takeout for foods
 */
+/**
+ * The result of checking the feature of string deduplication.
+ * The checking was performed via JVisualVM, the used heap size was monitored.
+ * The results: feature off - 161 154 736 Byte, feature on - 159 146 592 Byte.
+ */
 public class Application {
 
     @ThisCodeSmell(reviewer = "Zhanbolat")
