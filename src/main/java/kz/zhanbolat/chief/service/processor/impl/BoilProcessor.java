@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief.service.processor.impl;
 
+import kz.zhanbolat.chief.annotation.ThisCodeSmell;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 
@@ -17,6 +18,7 @@ public class BoilProcessor extends AbstractProcessor implements CookProcessor {
     }
 
     @Override
+    @ThisCodeSmell(reviewer = "Zhanbolat")
     public List<Ingredient> cook(List<Ingredient> ingredients) {
         List<Ingredient> cookedIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {

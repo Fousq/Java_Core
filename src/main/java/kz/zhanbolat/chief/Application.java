@@ -1,6 +1,8 @@
 package kz.zhanbolat.chief;
 
 import kz.zhanbolat.chief.annotation.ThisCodeSmell;
+import kz.zhanbolat.chief.annotation.handler.ThisCodeSmellAnnotationHandler;
+import kz.zhanbolat.chief.annotation.handler.impl.ThisCodeSmellAnnotationHandlerImpl;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
@@ -23,10 +25,13 @@ import kz.zhanbolat.chief.util.impl.ReflectionCreatorImpl;
 import kz.zhanbolat.chief.util.impl.ReflectionInvokerImpl;
 import kz.zhanbolat.chief.util.impl.ReflectionScannerImpl;
 
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+
+@ThisCodeSmell(reviewer = "Zhanbolat")
 /* TODO: Add entity fridge to store ingredients with the specific quantity,
     add handler on ingredient's endness, think about adding the takeout for foods
 */
@@ -37,37 +42,7 @@ public class Application {
     @ThisCodeSmell(reviewer = "Zhanbolat")
     @ThisCodeSmell(reviewer = "Another reviewer")
     public static void main(String[] args) {
-        ChiefService chiefService = reflectionCreator.instantiate(ChiefServiceImpl.class);
-        Dish greekSalad = (Dish) reflectionInvoker.invokeMethod(chiefService, "cookDish",
-                DishType.GREEK_SALAD);
-        System.out.println("Greek salad:");
-        for (Ingredient ingredient : greekSalad.getCookedIngredients()) {
-            System.out.println(ingredient);
-        }
 
-        System.out.println("Total calories: " + greekSalad.getCalories() + " gram");
-        IngredientFilter vegetableFilter = reflectionCreator.instantiate(VegetableIngredientFilter.class);
-        List<Ingredient> greekSaladVegetables = (List<Ingredient>) reflectionInvoker.invokeMethod(vegetableFilter,
-                "filterIngredients", greekSalad.getCookedIngredients());
-        VegetableSorter vegetableSorter = reflectionCreator.instantiate(VegetableSorterImpl.class);
-        List<OrganicIngredient> sortedVegetables = (List<OrganicIngredient>) reflectionInvoker.invokeMethod(vegetableSorter,
-                "sortByWeightAsc", greekSaladVegetables);
-        System.out.println("Sorted vegetables: " + Arrays.toString(sortedVegetables.toArray()));
-
-        System.out.println("\nBorsch:");
-        Dish borsch = (Dish) reflectionInvoker.invokeMethod(chiefService, "cookDish",
-                DishType.BORSCH);
-        for (Ingredient cookedIngredient : borsch.getCookedIngredients()) {
-            System.out.println(cookedIngredient);
-        }
-        System.out.println("Total calories: " + borsch.getCalories() + " gram");
-
-        IngredientFinder ingredientFinder = reflectionCreator.instantiate(IngredientFinderImpl.class);
-        SearchParams params = SearchParams.builder().setBoiled(true).setMinWeight(200).setMaxWeight(500).build();
-        Ingredient ingredient = (Ingredient) reflectionInvoker.invokeMethod(ingredientFinder, "findIngredient",
-                params, borsch.getCookedIngredients());
-        System.out.println("Found: " + ingredient);
-        runPrinting();
     }
 
     private static void runPrinting() {
