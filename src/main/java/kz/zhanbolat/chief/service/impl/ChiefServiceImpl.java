@@ -1,5 +1,7 @@
 package kz.zhanbolat.chief.service.impl;
 
+import kz.zhanbolat.chief.annotation.ProdCode;
+import kz.zhanbolat.chief.annotation.UseStackOnly;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.service.CookProcessorFactory;
@@ -12,9 +14,14 @@ import kz.zhanbolat.chief.service.processor.CookProcessor;
 
 import java.util.List;
 
+//@ProdCode
+// on uncomment should treat as error by the compiler
 public class ChiefServiceImpl implements ChiefService {
 
     @Override
+    //@UseStackOnly
+    // on uncomment should treat as error by the compiler
+    @ProdCode
     public Dish cookDish(DishType dishType) {
         List<Ingredient> ingredients = getIngredientsByDish(dishType);
         List<CookProcessor> cookProcessors = getCookProcessorsByDish(dishType);

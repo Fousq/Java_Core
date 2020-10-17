@@ -18,4 +18,3 @@ Offical docs:
 * <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/">Exception</a>
 * <a href="https://docs.oracle.com/javase/tutorial/java/IandI/final.html">Writing Final Classes and Methods</a>
 * <a href="https://docs.oracle.com/javase/tutorial/java/generics/types.html">Generic Types</a>
-

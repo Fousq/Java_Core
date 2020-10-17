@@ -1,5 +1,6 @@
 package kz.zhanbolat.chief;
 
+import kz.zhanbolat.chief.annotation.ThisCodeSmell;
 import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.entity.dish.Dish;
 import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
@@ -33,7 +34,8 @@ public class Application {
     private static final ReflectionCreator reflectionCreator = new ReflectionCreatorImpl();
     private static final ReflectionInvoker reflectionInvoker = new ReflectionInvokerImpl();
 
-    @SuppressWarnings("unchecked")
+    @ThisCodeSmell(reviewer = "Zhanbolat")
+    @ThisCodeSmell(reviewer = "Another reviewer")
     public static void main(String[] args) {
         ChiefService chiefService = reflectionCreator.instantiate(ChiefServiceImpl.class);
         Dish greekSalad = (Dish) reflectionInvoker.invokeMethod(chiefService, "cookDish",
