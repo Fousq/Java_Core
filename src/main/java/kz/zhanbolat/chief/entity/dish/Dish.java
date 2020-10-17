@@ -35,4 +35,11 @@ public class Dish {
     public long getCalories() {
         return caloriesCalculator.calculate(cookedIngredients);
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "cookedIngredients=" + cookedIngredients +
+                '}';
+    }
 }
