@@ -6,6 +6,7 @@ import kz.zhanbolat.chief.service.CaloriesCalculator;
 import java.util.List;
 
 public class CaloriesCalculatorImpl implements CaloriesCalculator {
+
     @Override
     public long calculate(List<Ingredient> ingredients) {
         long sum = 0;

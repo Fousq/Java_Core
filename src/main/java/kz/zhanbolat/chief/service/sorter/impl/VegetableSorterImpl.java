@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VegetableSorterImpl extends AbstractIngredientSorter implements VegetableSorter {
+
     @Override
     public List<OrganicIngredient> sortByWeightAsc(List<Ingredient> ingredients) {
         List<OrganicIngredient> vegetableIngredients = new ArrayList<>();

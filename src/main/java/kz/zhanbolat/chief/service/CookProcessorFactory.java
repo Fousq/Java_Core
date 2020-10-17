@@ -7,6 +7,8 @@ import kz.zhanbolat.chief.entity.ingredient.sauce.SauceIngredientFactory;
 import kz.zhanbolat.chief.entity.ingredient.spice.SpiceIngredientFactory;
 import kz.zhanbolat.chief.service.processor.CookProcessor;
 import kz.zhanbolat.chief.service.processor.impl.*;
+import kz.zhanbolat.chief.util.ReflectionClassPrinter;
+import kz.zhanbolat.chief.util.impl.ReflectionClassPrinterImpl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,10 +51,12 @@ public enum CookProcessorFactory {
 
     private final DishType dishType;
     private final List<CookProcessor> cookProcessors;
+    private final ReflectionClassPrinter printer = new ReflectionClassPrinterImpl();
 
     CookProcessorFactory(DishType dishType, CookProcessor... cookProcessors) {
         this.dishType = dishType;
         this.cookProcessors = Arrays.asList(cookProcessors);
+        printer.print(this.getClass());
     }
 
     public DishType getDishType() {
