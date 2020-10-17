@@ -15,3 +15,15 @@ Offical docs:
 
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
+
+## Task
+
+Description.
+
+Task 3. (10 points) MAT for heap dump analysis
+
+* Write simple application that consumes memory or take your mentoring pet application
+* Catch java.lang.OutOfMemoryError: Java heap space
+* Make heap dump (-XX:+HeapDumpOnOutOfMemoryError or via visualvm)
+* With Memory Analyzer Tool generate report that shows which classes are consuming the memory
+* Share results with mentor in essay format
