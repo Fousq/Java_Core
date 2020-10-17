@@ -1,4 +1,4 @@
-package kz.zhanbolat.chief.entity;
+package kz.zhanbolat.chief.entity.ingredient;
 
 import java.util.Objects;
 

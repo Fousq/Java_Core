@@ -1,4 +1,4 @@
-package kz.zhanbolat.chief.service.exception;
+package kz.zhanbolat.chief.exception;
 
 public class NoSuchDishFound extends RuntimeException {
     public NoSuchDishFound(String message) {

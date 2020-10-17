@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.entity.ingredient.sauce;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 
 import java.util.Objects;
 

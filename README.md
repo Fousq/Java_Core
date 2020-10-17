@@ -1,26 +1,18 @@
-# Java_Core_2
+# Java_Core_1
 
 ## Source Links
 
 Articals:
 
-* <a href="https://habrahabr.ru/post/139736/">Простые аннотации</a>
-* <a href="https://habrahabr.ru/company/golovachcourses/blog/217595/">Сложные аннотации</a>
-* <a href="https://habrahabr.ru/post/318418/">Выгодно ли вызывать методы через Reflection?</a>
-* <a href="https://www.baeldung.com/java-reflection">Reflection API</a>
-* <a href="https://www.youtube.com/watch?v=GzOjCzHg5Ks">Reflection Madness (Heinz Kabutz, Greece)(video)</a>
-* <a href="http://www.yegor256.com/2016/04/12/java-annotations-are-evil.html">Java Annotations Are a Big Mistake</a>
+* <a href="https://www.journaldev.com/1365/static-keyword-in-java">Все о static</a>
+* <a href="https://habrahabr.ru/post/207360/">Использование generic wildcards для повышения удобства Java API</a>
+* <a href="https://habrahabr.ru/post/66593/">Залезаем в дженерики при помощи Reflection</a>
+* <a href="https://habrahabr.ru/company/golovachcourses/blog/223821/">Исключения, часть 1</a>
+* <a href="https://habrahabr.ru/company/golovachcourses/blog/225585/">Исключения, часть 2</a>
+* <a href="https://habrahabr.ru/post/268683/">Беды проверяемых исключений</a>
+* <a href="https://habrahabr.ru/post/337536/">Антипаттерны обработки исключений</a>
 
 Offical docs:
 
 * <a href="https://docs.oracle.com/javase/tutorial/java/annotations/">Annotations</a>
 * <a href="https://docs.oracle.com/javase/tutorial/reflect/">Reflection API</a>
-
-## Task 5
-
-Description
-Task 5. (10 points) Very helpful annotation and its handler
-
-Write annotation handler for the previous task and @ProdCode annotation
-
-Add class ProdRunner and run all methods annotated with @ProdCode

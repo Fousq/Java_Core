@@ -1,5 +1,11 @@
 package kz.zhanbolat.chief;
 
+import kz.zhanbolat.chief.annotation.ThisCodeSmell;
+import kz.zhanbolat.chief.annotation.handler.ThisCodeSmellAnnotationHandler;
+import kz.zhanbolat.chief.annotation.handler.impl.ThisCodeSmellAnnotationHandlerImpl;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
+import kz.zhanbolat.chief.entity.dish.Dish;
+import kz.zhanbolat.chief.entity.ingredient.organic.OrganicIngredient;
 import kz.zhanbolat.chief.service.ChiefService;
 import kz.zhanbolat.chief.service.DishType;
 import kz.zhanbolat.chief.service.impl.ChiefServiceImpl;
@@ -11,30 +17,32 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public class Application {
 
+@ThisCodeSmell(reviewer = "Zhanbolat")
+/* TODO: Add entity fridge to store ingredients with the specific quantity,
+    add handler on ingredient's endness, think about adding the takeout for foods
+*/
+public class Application {
+    private static final ReflectionCreator reflectionCreator = new ReflectionCreatorImpl();
+    private static final ReflectionInvoker reflectionInvoker = new ReflectionInvokerImpl();
+
+    @ThisCodeSmell(reviewer = "Zhanbolat")
+    @ThisCodeSmell(reviewer = "Another reviewer")
     public static void main(String[] args) {
-        Map<String, ProdCodeRunModel> methodsParamsMap = new HashMap<>();
-        try {
-            methodsParamsMap.put(getMethod("cookDish", ChiefService.class).getName(),
-                    new ProdCodeRunModel(new ChiefServiceImpl(), DishType.GREEK_SALAD));
-        } catch (NoSuchMethodException e) {
-            System.err.println("Cannot get the method. " + e.getMessage());
-        }
-        ProdRunner runner = new ProdRunnerImpl(methodsParamsMap);
-        try {
-            runner.run();
-        } catch (IOException e) {
-            System.err.println("Cannot start the runner. " + e.getMessage());
-        }
+
     }
 
-    private static Method getMethod(String methodName, Class<?> clazz) throws NoSuchMethodException {
-        for (Method method : clazz.getMethods()) {
-            if (Objects.equals(method.getName(), methodName)) {
-                return method;
-            }
+    private static void runPrinting() {
+        ReflectionScanner scanner = new ReflectionScannerImpl();
+        Class<?>[] classes = new Class[0];
+        try {
+            classes = scanner.getClasses(Application.class.getPackageName());
+        } catch (IOException e) {
+            System.err.println("Cannot get classes from " + Application.class.getPackageName());
         }
-        throw new NoSuchMethodException("No such method " + methodName);
+        ReflectionClassPrinter printer = new ReflectionClassPrinterImpl();
+        for (Class<?> clazz : classes) {
+            printer.print(clazz);
+        }
     }
 }

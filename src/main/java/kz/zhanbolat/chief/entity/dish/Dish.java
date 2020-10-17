@@ -1,6 +1,6 @@
 package kz.zhanbolat.chief.entity.dish;
 
-import kz.zhanbolat.chief.entity.Ingredient;
+import kz.zhanbolat.chief.entity.ingredient.Ingredient;
 import kz.zhanbolat.chief.service.CaloriesCalculator;
 import kz.zhanbolat.chief.service.impl.CaloriesCalculatorImpl;
 
