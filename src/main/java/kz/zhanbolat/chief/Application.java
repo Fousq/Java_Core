@@ -25,7 +25,7 @@ import java.util.List;
  * Exercise 1. -XX:NewRatio=1 -XX:SurvivorRatio=5.
  * Exercise 2. -Xmx512M -XX:NewRatio=1 -XX:SurvivorRatio=4.
  * Exercise 3. -Xmx512M -Xmn384M -XX:SurvivorRatio=5.
- * Exercise 4. -Xmx512M -Xmn384M -XX:SurvivorRatio=5.
+ * Exercise 4. -Xmx512M -Xmn384M -XX:SurvivorRatio=1.
  */
 public class Application {
 
