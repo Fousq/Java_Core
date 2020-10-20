@@ -23,9 +23,10 @@ import java.util.List;
     add handler on ingredient's endness, think about adding the takeout for foods
 */
 /**
+ * JVM options: -XX:+UseG1GC -XX:+UseStringDeduplication(on); -XX:+UseG1GC(off)
  * The result of checking the feature of string deduplication.
  * The checking was performed via JVisualVM, the used heap size was monitored.
- * The results: feature off - 161 154 736 Byte, feature on - 159 146 592 Byte.
+ * The results: feature off - 313,737,872 Byte, feature on - 315,367,568 Byte.
  */
 public class Application {
 
